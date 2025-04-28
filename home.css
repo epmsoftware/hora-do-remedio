@@ -116,6 +116,7 @@ header {
   color: white;
   font-weight: bold;
   font-size: 13px;
+  text-align: center;
 }
 
 @media (max-width :600px) {
