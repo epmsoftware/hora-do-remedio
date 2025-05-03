@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="cadastro.css" />
 </head>
+
 <body>
     <div class="container">
         <div class="title">
@@ -20,15 +22,15 @@
 
                 <div class="containerValidade">
                     <label for="validade">Data de validade</label>
-                    <input id="validade" type="date" name="validade"/>
+                    <input id="validade" type="date" name="validade" />
                 </div>
 
                 <div class="containerQuantidade">
-                    <label for="quantidade" >Quantidade em Estoque</label>
-                    <input id="quantidade" type="number" name="quantidade" value="1" min="1"/>
+                    <label for="quantidade">Quantidade em Estoque</label>
+                    <input id="quantidade" type="number" name="quantidade" value="1" min="1" />
                 </div>
 
-                
+
                 <label class="frequencia" for="frequencia">Informe a frequência</label>
                 <select id="frequencia" name="frequencia">
                     <option value="">Selecione uma frequência</option>
@@ -43,8 +45,8 @@
                     <input id="dosagem" type="text">
                 </div>
 
-                <div class="container1horario" id="container1horario" style="display: none;" >
-                    <label for="frequencia1horario1" class="horario" >Selecione um Horário:</label>
+                <div class="container1horario" id="container1horario" style="display: none;">
+                    <label for="frequencia1horario1" class="horario">Selecione um Horário:</label>
                     <select type="time" id="frequencia1horario1" name="1horario">
                         <option>00:00</option>
                         <option>01:00</option>
@@ -73,8 +75,8 @@
                     </select>
                 </div>
 
-                <div class="container2horario" id="container2horario" style="display: none;" >
-                    <label for="frequencia2horario1" class="horario" >Selecione seus Horários:</label>
+                <div class="container2horario" id="container2horario" style="display: none;">
+                    <label for="frequencia2horario1" class="horario">Selecione seus Horários:</label>
                     <select type="time" id="frequencia2horario1" name="2horario">
                         <option>00:00</option>
                         <option>01:00</option>
@@ -102,7 +104,7 @@
                         <option>23:00</option>
                     </select>
 
-                    <select type="time" id="frequencia2horario2" name="2horario" >
+                    <select type="time" id="frequencia2horario2" name="2horario">
                         <option>00:00</option>
                         <option>01:00</option>
                         <option>02:00</option>
@@ -129,10 +131,10 @@
                         <option>23:00</option>
                     </select>
                 </div>
-                
-                <div class="container3horario" id="container3horario" style="display: none;" >
-                    <label for="frequencia3horario1" class="horario" >Selecione seus Horários:</label>
-                    <select type="time" id="frequencia3horario1" name="3horario" >
+
+                <div class="container3horario" id="container3horario" style="display: none;">
+                    <label for="frequencia3horario1" class="horario">Selecione seus Horários:</label>
+                    <select type="time" id="frequencia3horario1" name="3horario">
                         <option>00:00</option>
                         <option>01:00</option>
                         <option>02:00</option>
@@ -214,19 +216,20 @@
                     </select>
                 </div>
 
-                <div class="container_personalizado" id="personalizado" style="display: none;" >                    
+                <div class="container_personalizado" id="personalizado" style="display: none;">
                     <div>
-                        <label for="personalizado" class="personalizado" >Selecione seus Horários:</label>
+                        <label for="personalizado" class="personalizado">Selecione seus Horários:</label>
                         <input type="text">
-    
+
                         <input type="text">
-    
-                        <input type="text"> 
+
+                        <input type="text">
                     </div>
                 </div>
 
                 <label for="descricao">
-                    <textarea id="descricao" name="descricao" class='descricao' type='text' placeholder='Coloque aqui a informação do Remédio' ></textarea>
+                    <textarea id="descricao" name="descricao" class='descricao' type='text'
+                        placeholder='Coloque aqui a informação do Remédio'></textarea>
                 </label>
 
                 <div class="button_adicionar">
@@ -236,6 +239,7 @@
         </div>
     </div>
 
-    <script src="Cadastro.js" ></script>
+    <script src="Cadastro.js"></script>
 </body>
+
 </html>
