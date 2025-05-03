@@ -28,64 +28,203 @@
                     <input id="quantidade" type="number" name="quantidade" value="1" min="1"/>
                 </div>
 
-                <label class="primeiroHorario" for="horario1">Adicione o primeiro horário</label>
-                <select id="horario1" name="horario1" required>
-                    <option value="">Selecione um horário</option>
-                    <option>00:00</option>
-                    <option>01:00</option>
-                    <option>02:00</option>
-                    <option>03:00</option>
-                    <option>04:00</option>
-                    <option>05:00</option>
-                    <option>06:00</option>
-                    <option>07:00</option>
-                    <option>08:00</option>
-                    <option>09:00</option>
-                    <option>10:00</option>
-                    <option>11:00</option>
-                    <option>12:00</option>
-                    <option>13:00</option>
-                    <option>14:00</option>
-                    <option>15:00</option>
-                    <option>16:00</option>
-                    <option>17:00</option>
-                    <option>18:00</option>
-                    <option>19:00</option>
-                    <option>20:00</option>
-                    <option>21:00</option>
-                    <option>22:00</option>
-                    <option>23:00</option>
+                
+                <label class="frequencia" for="frequencia">Informe a frequência</label>
+                <select id="frequencia" name="frequencia">
+                    <option value="">Selecione uma frequência</option>
+                    <option>Uma vez ao dia</option>
+                    <option>Duas vezes ao dia</option>
+                    <option>Três vezes ao dia</option>
+                    <option>Personalizado</option>
                 </select>
 
-                <label class="segundoHorario" for="horario2">Adicione o segundo horário</label>
-                <select id="horario2" name="horario2">
-                    <option value="">Selecione um horário</option>
-                    <option>00:00</option>
-                    <option>01:00</option>
-                    <option>02:00</option>
-                    <option>03:00</option>
-                    <option>04:00</option>
-                    <option>05:00</option>
-                    <option>06:00</option>
-                    <option>07:00</option>
-                    <option>08:00</option>
-                    <option>09:00</option>
-                    <option>10:00</option>
-                    <option>11:00</option>
-                    <option>12:00</option>
-                    <option>13:00</option>
-                    <option>14:00</option>
-                    <option>15:00</option>
-                    <option>16:00</option>
-                    <option>17:00</option>
-                    <option>18:00</option>
-                    <option>19:00</option>
-                    <option>20:00</option>
-                    <option>21:00</option>
-                    <option>22:00</option>
-                    <option>23:00</option>
-                </select>
+                <div id="containerDosagem" class="dos" style="display: none;">
+                    <label for="dosagem" class="dosagem">Dosagem</label>
+                    <input id="dosagem" type="text">
+                </div>
+
+                <div class="container1horario" id="container1horario" style="display: none;" >
+                    <label for="frequencia1horario1" class="horario" >Selecione um Horário:</label>
+                    <select type="time" id="frequencia1horario1" name="1horario">
+                        <option>00:00</option>
+                        <option>01:00</option>
+                        <option>02:00</option>
+                        <option>03:00</option>
+                        <option>04:00</option>
+                        <option>05:00</option>
+                        <option>06:00</option>
+                        <option>07:00</option>
+                        <option>08:00</option>
+                        <option>09:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                        <option>22:00</option>
+                        <option>23:00</option>
+                    </select>
+                </div>
+
+                <div class="container2horario" id="container2horario" style="display: none;" >
+                    <label for="frequencia2horario1" class="horario" >Selecione seus Horários:</label>
+                    <select type="time" id="frequencia2horario1" name="2horario">
+                        <option>00:00</option>
+                        <option>01:00</option>
+                        <option>02:00</option>
+                        <option>03:00</option>
+                        <option>04:00</option>
+                        <option>05:00</option>
+                        <option>06:00</option>
+                        <option>07:00</option>
+                        <option>08:00</option>
+                        <option>09:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                        <option>22:00</option>
+                        <option>23:00</option>
+                    </select>
+
+                    <select type="time" id="frequencia2horario2" name="2horario" >
+                        <option>00:00</option>
+                        <option>01:00</option>
+                        <option>02:00</option>
+                        <option>03:00</option>
+                        <option>04:00</option>
+                        <option>05:00</option>
+                        <option>06:00</option>
+                        <option>07:00</option>
+                        <option>08:00</option>
+                        <option>09:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                        <option>22:00</option>
+                        <option>23:00</option>
+                    </select>
+                </div>
                 
+                <div class="container3horario" id="container3horario" style="display: none;" >
+                    <label for="frequencia3horario1" class="horario" >Selecione seus Horários:</label>
+                    <select type="time" id="frequencia3horario1" name="3horario" >
+                        <option>00:00</option>
+                        <option>01:00</option>
+                        <option>02:00</option>
+                        <option>03:00</option>
+                        <option>04:00</option>
+                        <option>05:00</option>
+                        <option>06:00</option>
+                        <option>07:00</option>
+                        <option>08:00</option>
+                        <option>09:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                        <option>22:00</option>
+                        <option>23:00</option>
+                    </select>
+
+                    <select type="time" id="frequencia3horario2" name="3horario">
+                        <option>00:00</option>
+                        <option>01:00</option>
+                        <option>02:00</option>
+                        <option>03:00</option>
+                        <option>04:00</option>
+                        <option>05:00</option>
+                        <option>06:00</option>
+                        <option>07:00</option>
+                        <option>08:00</option>
+                        <option>09:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                        <option>22:00</option>
+                        <option>23:00</option>
+                    </select>
+
+                    <select type="time" id="frequencia3horario3" name="3horario">
+                        <option>00:00</option>
+                        <option>01:00</option>
+                        <option>02:00</option>
+                        <option>03:00</option>
+                        <option>04:00</option>
+                        <option>05:00</option>
+                        <option>06:00</option>
+                        <option>07:00</option>
+                        <option>08:00</option>
+                        <option>09:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                        <option>22:00</option>
+                        <option>23:00</option>
+                    </select>
+                </div>
+
+                <div class="container_personalizado" id="personalizado" style="display: none;" >                    
+                    <div>
+                        <label for="personalizado" class="personalizado" >Selecione seus Horários:</label>
+                        <input type="text">
+    
+                        <input type="text">
+    
+                        <input type="text"> 
+                    </div>
+                </div>
+
                 <label for="descricao">
                     <textarea id="descricao" name="descricao" class='descricao' type='text' placeholder='Coloque aqui a informação do Remédio' ></textarea>
                 </label>
@@ -97,6 +236,6 @@
         </div>
     </div>
 
-    <script src="cadastro.js" ></script>
+    <script src="Cadastro.js" ></script>
 </body>
 </html>

@@ -86,15 +86,10 @@ input {
     align-items: center;
 }
 
-.primeiroHorario {
+.frequencia {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
-}
-
-.segundoHorario {
-    display: flex;
-    justify-content: center;
+    margin-top: 13px;
 }
 
 select {
@@ -103,8 +98,66 @@ select {
     height: 30px;
     padding: 5px;
     margin: 10px 0;
-    border-radius: 10px;
 }
+
+.dosagem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.horario {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.select {
+    border: 1px solid #d3d3d3;
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+.dos {
+    width: 100%;
+}
+
+.dos input {
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.container1horario {
+    width: 100%;
+}
+
+.container1horario input {
+    margin-left: 15px;
+}
+
+.container2horario input {
+    margin-left: 15px;
+}
+
+.container3horario input {
+    margin-left: 15px;
+}
+
+.formularioMedicamentos .container_personalizado input {
+    margin-left: 100px;
+}
+
+.formularioMedicamentos .container_personalizado .personalizado {
+    margin-left: 90px;
+
+}
+.formularioMedicamentos .container_personalizado div {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
 
 .descricao {
     background-color: #fff;
