@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Poppins:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.5;
+    font-family: "Poppins", sans-serif;
+    background-color: #007fff;
+    height: 100vh;
+}
+
+@media (max-width: 600px) {
+    body {
+        overflow: hidden;
+    }
+}
+
+
+.container_Notas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    padding: 40px;
+    width: 98%;
+    color: gainsboro;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: inset;
+    margin-top: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerRemLix {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.imagemLixeira {
+    padding-top: 5px;
+    height: 50px;
+}
+
+.imagemLixeira:hover {
+    cursor: pointer;
+}
+
+.container_Cadastrados {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 40px;
+    margin-top: 10px;
+    width: 95%;
+    border-radius: 10px;
+    border: inset;
+    display: flex;
+    flex-direction: column;
+}
+
+.medicamento {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 40px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: inset;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nomeRemedio {
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    margin-top: 15px;
+}
+
+p {
+    margin-top: 5px;
+    color: gainsboro;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-top: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+@media (max-width: 600px) {
+    h2 {
+        font-size: 100%;
+        padding: 30px;
+        text-align: center;
+    }
+
+    p {
+        font-size: 80%;
+    }
+
+    .container_Notas {
+        display: flex;
+        width: 100%;
+    }
+
+    .container_Cadastrados {
+        height: 50pxpx;
+        padding-left: 7px;
+        padding-right: 7px;
+        padding-top: 5px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .medicamento {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        padding-bottom: 17px;
+        margin-top: 10px;
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+    .nomeRemedio {
+        font-size: 9px;
+        text-align: center;
+        margin-top: 17px;
+        width: 100px;
+    }
+
+    .imagemLixeira {
+        height: 25px;
+        margin-top: 14px;
+        margin-right: 15px;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 25px;
+        height: 15px;
+        margin-top: 22px;
+        left: 15px;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 34px;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 12px;
+        width: 12px;
+        left: 3px;
+        bottom: 1.8px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+    input:checked+.slider:before {
+        transform: translateX(8px);
+    }
+}
