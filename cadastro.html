@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="cadastro.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="images/clock.png">
 </head>
 
 <body>
+    <header>
+        <i id="back" class="fas fa-circle-arrow-left fa-2x"></i>
+    </header>
     <div class="container">
         <div class="title">
             <h1>Cadastro de Medicamentos</h1>
@@ -37,7 +44,6 @@
                     <option>Uma vez ao dia</option>
                     <option>Duas vezes ao dia</option>
                     <option>Três vezes ao dia</option>
-                    <option>Personalizado</option>
                 </select>
 
                 <div id="containerDosagem" class="dos" style="display: none;">
@@ -216,17 +222,6 @@
                     </select>
                 </div>
 
-                <div class="container_personalizado" id="personalizado" style="display: none;">
-                    <div>
-                        <label for="personalizado" class="personalizado">Selecione seus Horários:</label>
-                        <input type="text">
-
-                        <input type="text">
-
-                        <input type="text">
-                    </div>
-                </div>
-
                 <label for="descricao">
                     <textarea id="descricao" name="descricao" class='descricao' type='text'
                         placeholder='Coloque aqui a informação do Remédio'></textarea>
@@ -239,7 +234,7 @@
         </div>
     </div>
 
-    <script src="Cadastro.js"></script>
+    <script src="cadastro.js"></script>
 </body>
 
 </html>

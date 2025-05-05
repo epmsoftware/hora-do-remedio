@@ -64,11 +64,6 @@ document.getElementById('frequencia').addEventListener('click', function () {
     }
 });
 
-document.getElementById('frequencia').addEventListener('click', function () {
-    var personalizado = document.getElementById('personalizado');
-    if (this.value === 'Personalizado') {
-        personalizado.style.display = 'block';
-    } else {
-        personalizado.style.display = 'none';
-    }
-});
+document.getElementById('back').addEventListener('click', function () {
+    window.location.href = 'home.html';
+})
