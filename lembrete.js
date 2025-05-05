@@ -1,5 +1,6 @@
 
 let intervalId;
+let dateId;
 
 function fetchMedicamentos() {
     fetch('http://localhost:3000/api/medicamentos')
@@ -28,6 +29,22 @@ function fetchMedicamentos() {
                     };
                 });
             }, 1000);
+
+            dateId = setInterval(() => {
+                const currentDate = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+
+                data.forEach(medicamento => {
+                    const validade = medicamento.validade;
+                    if (currentDate === validade) {
+                        alert(`Seu ${medicamento.nome} chegou na data de validade: ${medicamento.validade}`);
+                    };
+                });
+            }, 3900000);
+
+
+            document.getElementById('back').addEventListener('click', function () {
+                window.location.href = 'Home.html'
+            })
 
             if (data.length === 0) {
                 const mensagem = document.createElement('p');
@@ -63,20 +80,34 @@ function fetchMedicamentos() {
 
                     label.appendChild(document.createTextNode(' ')); // Espaço entre o checkbox e o texto*/
 
+                    const [ano, mes, dia] = medicamento.validade.split('-');
+                    const validadeFormatada = `${dia}/${mes}/${ano}`;
+
                     // Adiciona o texto do medicamento
                     const textoMedicamento = document.createElement('span');
                     textoMedicamento.className = 'nomeRemedio';
-                    textoMedicamento.textContent = `${medicamento.nome} - ${medicamento.frequencia}`;
+                    textoMedicamento.innerHTML = `${medicamento.nome}&nbsp;&nbsp;&nbsp;&nbsp;[&nbspFrequência - ${medicamento.frequencia}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;Quantidade em estoque - ${medicamento.quantidade}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;Validade - ${validadeFormatada}&nbsp]`;
 
                     /* Adiciona o checkbox e o texto a uma nova div
                     medicamentoDiv.appendChild(label);*/
                     medicamentoDiv.appendChild(textoMedicamento);
 
-                    // Adiciona o link para excluir as informações do medicamento
+                    // Cria div para os links
+                    const divLinks = document.createElement('div');
+                    divLinks.className = 'divLinks';
+
+                    // Cria o link para excluir as informações do medicamento
                     const linkLixeira = document.createElement('a');
+                    linkLixeira.className = 'linkLixeira';
                     const imagemLinkLixeira = document.createElement('img');
                     imagemLinkLixeira.className = 'imagemLixeira';
                     imagemLinkLixeira.src = './images/lixeira-removebg-preview.png';
+
+                    // Cria o link para editar as informações do medicamento
+                    const linkEdit = document.createElement('a');
+                    linkEdit.className = 'linkEdit';
+                    const imagemLinkEdit = document.createElement('i');
+                    imagemLinkEdit.className = 'fa-solid fa-pen';
 
                     // Função para confirmar e excluir o medicamento
                     function confirmarExclusao(id) {
@@ -107,8 +138,31 @@ function fetchMedicamentos() {
                         confirmarExclusao(medicamento.id);
                     });
 
+                    // Função para editar a quantidade em estoque
+                    async function editarEstoque(id) {
+                        const editar = prompt('Editar quantidade:', medicamento.quantidade);
+
+                        if (editar !== null && !isNaN(editar)) {
+                            await fetch(`http://localhost:3000/api/editarestoque/${id}`, {
+                                method: 'PUT',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ quantidade: Number(editar) })
+                            });
+                            fetchMedicamentos();
+                        }
+                    }
+
+                    // Chamar função para editar a quantidade
+                    imagemLinkEdit.addEventListener('click', function () {
+                        editarEstoque(medicamento.id);
+                    });
+
+
+                    divLinks.appendChild(linkEdit);
+                    divLinks.appendChild(linkLixeira);
+                    linkEdit.appendChild(imagemLinkEdit);
                     linkLixeira.appendChild(imagemLinkLixeira);
-                    medicamentoDiv.appendChild(linkLixeira);
+                    medicamentoDiv.appendChild(divLinks);
 
                     // Adiciona a nova div ao contâiner de medicamentos
                     medicamentosContainer.appendChild(infoRemLixDiv);
@@ -136,3 +190,7 @@ function fetchMedicamentos() {
 
 // Chama a função para buscar medicamentos ao carregar a página
 window.onload = fetchMedicamentos;
+
+document.getElementById('back').addEventListener('click', function () {
+    window.location.href = 'home.html';
+})
