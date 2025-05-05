@@ -8,7 +8,6 @@
 
 html {
   font-size: 100%;
-  /* Define a base para rem */
 }
 
 body {
@@ -23,8 +22,6 @@ body {
     height: 80vh;
   }
 }
-
-/* Outros resets podem ser adicionados conforme necessário */
 
 header {
   display: flex;
@@ -246,6 +243,7 @@ header .rem {
 
 .compartilhe .span {
   text-decoration: none;
+  font-style: italic;
 }
 
 .compartilhe .span:hover {
@@ -274,7 +272,7 @@ header .rem {
 
 footer {
   width: 95%;
-  margin-top: 22%;
+  margin-top: 18%;
   margin-left: 2%;
   text-align: center;
   color: #E6E6FA;
