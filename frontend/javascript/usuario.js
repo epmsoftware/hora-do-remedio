@@ -1,4 +1,4 @@
-document.getElementById('usuarioForm').addEventListener('submit', function (event) {
+document.getElementById('usuarioForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
     const nome = document.getElementById('nome').value;
@@ -9,22 +9,25 @@ document.getElementById('usuarioForm').addEventListener('submit', function (even
     const telefone = document.getElementById('telefone').value;
     const observacao = document.getElementById('observacao').value;
 
+    try {
     // Enviar os dados para o banco de dados
-    fetch('http://localhost:3000/api/usuarios', {
+    const response = await fetch('http://localhost:3000/api/usuarios', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type' : 'application/json'
         },
         body: JSON.stringify({ nome, idade, peso, altura, email, telefone, observacao })
-    })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-            document.getElementById('usuarioForm').reset();
-        })
-        .catch(error => console.error('Erro:', error));
+    });
+    
+        const data = await response.json();
+        alert(data.message);
+        document.getElementById('usuarioForm').reset();
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao cadastrar usuário!');
+    }
 });
 
-document.getElementById('back').addEventListener('click', function () {
-    window.location.href = 'home.html';
+document.getElementById('back').addEventListener('click', function() {
+    window.location.href = 'Home.html';
 })
