@@ -37,13 +37,29 @@ header {
 header .clock {
   margin-bottom: 1%;
   z-index: 1;
+  height: 70px;
+  margin-left: 5px;
 }
 
 header .rem {
   z-index: 2;
-  height: 50px;
-  margin-left: -1.8%;
-  margin-top: 2%;
+  height: 40px;
+  margin-left: -8.0%;
+  margin-top: 20%;
+}
+
+.logo-wrapper {
+  background-color: white;
+  border-radius: 20px;
+  padding: 3px 3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: fit-content;
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: 128px;
+  overflow: hidden;
 }
 
 @media (max-width: 600px) {
@@ -65,13 +81,12 @@ header .rem {
 
 }
 
-
   .title {
     display: flex;
     flex-direction: column;
     color: white;
     text-align: center;
-    margin-left: 25.8%;
+    margin-left: 20.8%;
   }
   
   @media (max-width: 600px) {
@@ -271,7 +286,7 @@ header .rem {
 
   footer {
     width: 95%;
-    margin-top: 22%;
+    margin-top: 19%;
     margin-left: 2%;
     text-align: center;
     color: #E6E6FA;
