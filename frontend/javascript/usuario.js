@@ -29,5 +29,5 @@ document.getElementById('usuarioForm').addEventListener('submit', async function
 });
 
 document.getElementById('back').addEventListener('click', function() {
-    window.location.href = 'Home.html';
+    window.location.href = 'home.html';
 })

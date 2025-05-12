@@ -69,5 +69,5 @@ document.getElementById('frequencia').addEventListener('click', function() {
 });
 
 document.getElementById('back').addEventListener('click', function() {
-    window.location.href = 'Home.html';
+    window.location.href = 'home.html';
 })
