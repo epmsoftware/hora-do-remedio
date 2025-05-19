@@ -17,7 +17,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             // Salvar o ID do usuário no localStorage, sessionStorage ou redirecionar com token
             localStorage.setItem('usuarioId', data.usuarioId);
             alert('Login bem-sucedido!');
-            window.location.href = `Home.html?usuarioId=${data.usuarioId}`; // redireciona
+            window.location.href = `home.html?usuarioId=${data.usuarioId}`; // redireciona
         } else {
             alert(data.message);
         }
