@@ -29,8 +29,10 @@ app.use('/api/cadastrar', medicamentoRoutes);
 app.use('/api/medicamentos', medicamentoRoutes);
 app.use('/api/descricao', medicamentoRoutes);
 
+app.use('/frontend', express.static(path.join(__dirname, '..', 'frontend')));
+
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Front-End/Html/Login.html'));
+    res.sendFile(path.join(__dirname, '..', 'frontend', 'html', 'login.html'));
 });
 
 app.listen(port, () => {
