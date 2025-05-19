@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+body {
+  line-height: 1.5;
+  font-family: "Poppins", sans-serif;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Front-End/Images/Fundo\ form.webp');
+  backdrop-filter: blur(1px);
+  background-size: cover;
+}
+
+header {
+  width: 100%;
+  padding: 2% 2% 0 2%;
+}
+
+header i:hover {
+  cursor: pointer;
+}
+
+i {
+  font-size: 50px;
+  color: #0077cc;
+  position: fixed;
+  top: 25px;
+  left: 35px;
+}
+
+footer {
+    width: 95%;
+    margin-top: 22%;
+    margin-left: 2%;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    position: fixed;
+    bottom: 0;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
