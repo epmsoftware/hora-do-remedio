@@ -10,7 +10,7 @@ const port = 3000;
 app.use(cors({ origin: 'http://127.0.0.1:5500', credentials: true }));
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(express.static('HORA DO REMEDIO'));
+app.use(express.static(path.join(__dirname, '..', 'frontend')));
 app.use(session({
     secret: 'EpM.AvsM',
     resave: false,

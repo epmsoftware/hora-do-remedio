@@ -14,7 +14,7 @@ const logout = document.getElementsByTagName('i');
 
                 if (response.ok) {
                     alert(data.message);
-                    window.location.href = 'login.html';
+                    window.location.href = '/';
                 } else {
                     alert('Erro ao deslogar: ' + data.message);
                 }
