@@ -1,3 +1,10 @@
+const usuarioId = localStorage.getItem('usuarioId');
+
+if (!usuarioId) {
+    alert('Você precisa estar logado.');
+    window.location.href = 'login.html';
+}
+
 document.getElementById('medicamentoForm').addEventListener('submit', async function(event) {
     event.preventDefault(); // Impede o envio padrão do formulário
 
@@ -13,6 +20,8 @@ document.getElementById('medicamentoForm').addEventListener('submit', async func
     const frequencia3horario2 = document.getElementById('frequencia3horario2').value;
     const frequencia3horario3 = document.getElementById('frequencia3horario3').value;
     const descricao = document.getElementById('descricao').value;
+    const usuarioId = localStorage.getItem('usuarioId');
+
 
 
     try {
@@ -22,7 +31,7 @@ document.getElementById('medicamentoForm').addEventListener('submit', async func
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ nome, validade, quantidade, frequencia, dosagem, frequencia1horario1, frequencia2horario1, frequencia2horario2, frequencia3horario1, frequencia3horario2, frequencia3horario3, descricao })
+        body: JSON.stringify({ nome, validade, quantidade, frequencia, dosagem, frequencia1horario1, frequencia2horario1, frequencia2horario2, frequencia3horario1, frequencia3horario2, frequencia3horario3, descricao, usuarioId })
     });
     
         const data = await response.json();
@@ -68,6 +77,9 @@ document.getElementById('frequencia').addEventListener('click', function() {
     }
 });
 
-document.getElementById('back').addEventListener('click', function() {
-    window.location.href = 'home.html';
-})
+const back = document.getElementsByTagName('i');
+    if (back.length > 0) {
+        back[0].addEventListener('click', async function () {
+            window.location.href = 'home.html'
+        })
+    }

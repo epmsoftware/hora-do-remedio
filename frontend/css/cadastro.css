@@ -1,118 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Poppins:wght@300;400;700&display=swap');
-
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-  }
-
-body {
-    line-height: 1.5;
-    font-family: "Poppins", sans-serif;
-    background-color: #007fff;
-    height: 100vh;
-  }
-
-  @media (max-width: 600px) {
-    body {
-      overflow: hidden;
-    }
-  }
-
-  header {
-    width: 100%;
-    padding: 2% 2% 0 2%;
-  }
-
-  header i:hover {
-    cursor: pointer;
-  }
-  
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-.title {
-    margin-top: -2%;
-    color: #f5f5f5;
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    line-height: 1.5;
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/Front-End/Images/descarte.png');
+    background-size: cover;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .formularioMedicamentos {
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 3%;
-    padding-right: 3%;
-    padding-top: 1.5%;
-    padding-bottom: 2%;
-    margin-top: 5px;
-    max-width: 30%;
-    border-radius: 15px;
-    border: none;
-    font-weight: 500;
-    box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
-}
-
-h1 {
-    margin-bottom: 15px;
-    font-size: 1.5em;
-}
-
-.nomeRemedio {
+    background: rgba(255, 255, 255, 0.1);
+    /* Efeito vidro */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     width: 100%;
-    padding: 5px;
-    margin: 5px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 500px;
 }
 
-input {
-    background-color: #fff;
-    border: 1px solid #d3d3d3;
-    border-radius: 5px;
-    height: 25px;
-    padding: 2%;
+.formularioMedicamentos h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
 }
 
-.containerValidade {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.containerQuantidade {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.frequencia {
-    display: flex;
-    justify-content: center;
-    margin-top: 13px;
+.formularioMedicamentos input,
+.formularioMedicamentos textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
 }
 
 select {
-    border: 1px solid #d3d3d3;
     width: 100%;
-    height: 30px;
-    padding: 5px;
-    margin: 10px 0;
-}
-
-.dosagem {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
 }
 
 .horario {
@@ -121,21 +60,12 @@ select {
     width: 100%;
 }
 
-.select {
-    border: 1px solid #d3d3d3;
-    width: 100%;
-    height: 30px;
-    padding: 5px;
-    margin: 10px 0;
-}
-
-.dos {
-    width: 100%;
-}
-
 .dos input {
-    margin-left: 15px;
-    margin-bottom: 15px;
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
 }
 
 .container1horario {
@@ -162,6 +92,7 @@ select {
     margin-left: 90px;
 
 }
+
 .formularioMedicamentos .container_personalizado div {
     margin-top: 15px;
     margin-bottom: 20px;
@@ -181,66 +112,46 @@ select {
 }
 
 .button_adicionar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
-button {
-    background-color: #007fff;
-    color: #fff;
-    font-weight: bolder;
+.button_adicionar button {
+    padding: 10px 20px;
     border: none;
-    width: 100%;
-    max-width: 150px;
-    height: 40px;
-    padding: 10px;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 button:hover {
     cursor: pointer;
 }
 
-/* Media Query para telas menores */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.2em; /* Tamanho da fonte menor em telas pequenas */
-        margin-top: 15px;
-    }
+i {
+    font-size: 50px;
+    color: #0077cc;
+    position: fixed;
+    top: 25px;
+    left: 35px;
+}
 
-    h3 {
-        font-size: 13px; /* Tamanho da fonte menor em telas pequenas */
-        text-align: center;
-    }
+i:hover {
+    cursor: pointer;
+}
 
-    label {
-        font-size: 13px;
-    }
+footer {
+    width: 95%;
+    margin-top: 22%;
+    margin-left: 2%;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    position: fixed;
+    bottom: 0;
+}
 
-    input {
-        height: 22px;
-    }
-
-    select {
-        font-size: 10px;
-        margin-top: 0;
-    }
-
-    .formularioMedicamentos {
-        padding-top: 5%;
-        padding-left: 8%;
-        padding-right: 8%;
-        padding-bottom: 8%;
-        max-width: 90%;
-    }
-
-    button {
-        height: 30px; /* Aumenta a altura do botão em telas pequenas */
-    }
+footer a:hover {
+    text-decoration: underline;
 }

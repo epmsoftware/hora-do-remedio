@@ -1,40 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Cadastro de medicamentos</title>
     <link rel="stylesheet" href="/frontend/css/cadastro.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="/frontend/images/clock.png">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="/frontend/images/cadastro1.jpg">
 </head>
+
 <body>
-    <header>
-        <i id="back" class="fas fa-circle-arrow-left fa-2x"></i>
-    </header>
+    <i class="fas fa-backward fa-beat-fade"></i>
+
     <div class="container">
-        <div class="title">
-            <h1>Cadastro de Medicamentos</h1>
-        </div>
         <div class="formularioMedicamentos">
+            <h1>Cadastro de Medicamentos</h1>
             <form id="medicamentoForm">
-                <div class="nomeRemedio">
-                    <label for="nome">Nome do Medicamento:</label>
-                    <input type="text" id="nome" name="nome" required>
-                </div>
+                <input type="text" id="nome" name="nome" placeholder="Nome do remédio" required>
 
-                <div class="containerValidade">
-                    <label for="validade">Data de validade</label>
-                    <input id="validade" type="date" name="validade"/>
-                </div>
+                <input id="validade" type="date" name="validade" />
 
-                <div class="containerQuantidade">
-                    <label for="quantidade" >Quantidade em Estoque</label>
-                    <input id="quantidade" type="number" name="quantidade" value="1" min="1"/>
-                </div>
+                <input id="quantidade" type="number" name="quantidade" placeholder="Quantidade" min="1" />
 
-                
-                <label class="frequencia" for="frequencia">Informe a frequência</label>
+
                 <select id="frequencia" name="frequencia">
                     <option value="">Selecione uma frequência</option>
                     <option>Uma vez ao dia</option>
@@ -43,12 +34,11 @@
                 </select>
 
                 <div id="containerDosagem" class="dos" style="display: none;">
-                    <label for="dosagem" class="dosagem">Dosagem</label>
-                    <input id="dosagem" type="text">
+                    <input id="dosagem" type="text" placeholder="Dosagem">
                 </div>
 
-                <div class="container1horario" id="container1horario" style="display: none;" >
-                    <label for="frequencia1horario1" class="horario" >Selecione um Horário:</label>
+                <div class="container1horario" id="container1horario" style="display: none;">
+                    <label for="frequencia1horario1" class="horario">Selecione um Horário:</label>
                     <select type="time" id="frequencia1horario1" name="1horario">
                         <option></option>
                         <option>00:00</option>
@@ -78,8 +68,8 @@
                     </select>
                 </div>
 
-                <div class="container2horario" id="container2horario" style="display: none;" >
-                    <label for="frequencia2horario1" class="horario" >Selecione seus Horários:</label>
+                <div class="container2horario" id="container2horario" style="display: none;">
+                    <label for="frequencia2horario1" class="horario">Selecione seus Horários:</label>
                     <select type="time" id="frequencia2horario1" name="2horario">
                         <option></option>
                         <option>00:00</option>
@@ -108,7 +98,7 @@
                         <option>23:00</option>
                     </select>
 
-                    <select type="time" id="frequencia2horario2" name="2horario" >
+                    <select type="time" id="frequencia2horario2" name="2horario">
                         <option></option>
                         <option>00:00</option>
                         <option>01:00</option>
@@ -136,10 +126,10 @@
                         <option>23:00</option>
                     </select>
                 </div>
-                
-                <div class="container3horario" id="container3horario" style="display: none;" >
-                    <label for="frequencia3horario1" class="horario" >Selecione seus Horários:</label>
-                    <select type="time" id="frequencia3horario1" name="3horario" >
+
+                <div class="container3horario" id="container3horario" style="display: none;">
+                    <label for="frequencia3horario1" class="horario">Selecione seus Horários:</label>
+                    <select type="time" id="frequencia3horario1" name="3horario">
                         <option></option>
                         <option>00:00</option>
                         <option>01:00</option>
@@ -225,7 +215,8 @@
                 </div>
 
                 <label for="descricao">
-                    <textarea id="descricao" name="descricao" class='descricao' type='text' placeholder='Coloque aqui a informação do Remédio' ></textarea>
+                    <textarea id="descricao" name="descricao" class='descricao' type='text'
+                        placeholder='Coloque aqui a informação do Remédio'></textarea>
                 </label>
 
                 <div class="button_adicionar">
@@ -235,6 +226,11 @@
         </div>
     </div>
 
-    <script src="/frontend/javascript/cadastro.js" ></script>
+    <footer>
+        <p>&copy; 2025 Hora do Remédio.</p>
+    </footer>
+
+    <script src="/frontend/javascript/cadastro.js"></script>
 </body>
+
 </html>

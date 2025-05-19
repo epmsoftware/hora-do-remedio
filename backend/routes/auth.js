@@ -46,4 +46,17 @@ router.post('/logout', (req, res) => {
     });
 });
 
+router.get('/usuario-logado', (req, res) => {
+    if (req.session.usuarioId) {
+        res.status(200).json({
+            logado: true,
+            usuarioId: req.session.usuarioId
+        });
+    } else {
+        res.status(200).json({
+            logado: false
+        });
+    }
+});
+
 module.exports = router;
