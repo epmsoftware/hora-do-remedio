@@ -33,7 +33,7 @@ async function fetchMedicamentos() {
                     alert(`É hora de tomar seu ${medicamento.nome} - Dosagem: ${medicamento.dosagem}`);
                 };
             });
-        }, 5000);
+        }, 3600000);
 
 
         // Verifica a data atual a cada 1 hora
@@ -123,7 +123,7 @@ async function fetchMedicamentos() {
 
                     if (confirmacao) {
                         try {
-                            const deletResp = await fetch(`http://localhost:3000/api/deletar/${medicamento.id}`, {
+                            const deletResp = await fetch(`http://localhost:3000/api/medicamentos/${medicamento.id}`, {
                                 method: 'DELETE'
                             });
 
@@ -140,7 +140,7 @@ async function fetchMedicamentos() {
                     const editar = prompt('Editar quantidade:', medicamento.quantidade);
 
                     if (editar !== null && !isNaN(editar)) {
-                        await fetch(`http://localhost:3000/api/editarestoque/${medicamento.id}`, {
+                        await fetch(`http://localhost:3000/api/medicamentos/editarestoque/${medicamento.id}`, {
                             method: 'PUT',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ quantidade: Number(editar) })

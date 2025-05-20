@@ -7,7 +7,7 @@
 body {
     line-height: 1.5;
     font-family: Arial, sans-serif;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/Front-End/Images/descarte.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/frontend/images/descarte.png');
     background-size: cover;
 }
 
