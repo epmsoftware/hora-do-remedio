@@ -23,7 +23,7 @@ async function fetchMedicamentos() {
         const back = document.getElementsByTagName('i');
         if (back.length > 0) {
             back[0].addEventListener('click', async function () {
-                window.location.href = 'Home.html';
+                window.location.href = 'home.html';
             });
         }
 

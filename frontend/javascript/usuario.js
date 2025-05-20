@@ -29,6 +29,6 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
 const back = document.getElementsByTagName('i');
     if (back.length > 0) {
         back[0].addEventListener('click', async function () {
-    window.location.href = 'Login.html';
+    window.location.href = 'login.html';
     });
 }
