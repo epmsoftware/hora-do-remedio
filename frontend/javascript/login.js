@@ -14,12 +14,18 @@ document.getElementById('loginForm').addEventListener('submit', async function (
         const data = await response.json();
 
         if (response.ok) {
-            // Salvar o ID do usuário no localStorage, sessionStorage ou redirecionar com token
+            // Login bem-sucedido, salva o ID do usuário e redireciona para a home
             localStorage.setItem('usuarioId', data.usuarioId);
             alert('Login bem-sucedido!');
-            window.location.href = `home.html?usuarioId=${data.usuarioId}`; // redireciona
+            window.location.href = `home.html?usuarioId=${data.usuarioId}`;
         } else {
-            alert(data.message);
+            // Se o erro for 401, redireciona para a página de cadastro
+            if (response.status === 401) {
+                alert('Usuário não cadastrado.');
+                window.location.href = '/frontend/html/usuario.html'; // Redireciona para o formulário de cadastro
+            } else {
+                alert(data.message || 'Erro desconhecido');
+            }
         }
     } catch (err) {
         console.error('Erro:', err);
