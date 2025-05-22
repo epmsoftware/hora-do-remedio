@@ -11,7 +11,6 @@
             window.location.href = '/';
         } else {
             console.log('Usuário autenticado com ID:', data.usuarioId);
-            // Você pode exibir isso na tela se quiser
         }
     } catch (error) {
         console.error('Erro ao verificar sessão:', error);
@@ -19,81 +18,87 @@
     }
 })();
 
+// Utilitário para formatar horário para HH:mm
+const formatarHorario = (id) => {
+    const valor = document.getElementById(id).value;
+    return valor ? valor.slice(0, 5) : null;
+};
+
 document.getElementById('medicamentoForm').addEventListener('submit', async function(event) {
-    event.preventDefault(); // Impede o envio padrão do formulário
+    event.preventDefault();
 
     const nome = document.getElementById('nome').value;
     const validade = document.getElementById('validade').value;
     const quantidade = document.getElementById('quantidade').value;
     const frequencia = document.getElementById('frequencia').value;
     const dosagem = document.getElementById('dosagem').value;
-    const frequencia1horario1 = document.getElementById('frequencia1horario1').value;
-    const frequencia2horario1 = document.getElementById('frequencia2horario1').value;
-    const frequencia2horario2 = document.getElementById('frequencia2horario2').value;
-    const frequencia3horario1 = document.getElementById('frequencia3horario1').value;
-    const frequencia3horario2 = document.getElementById('frequencia3horario2').value;
-    const frequencia3horario3 = document.getElementById('frequencia3horario3').value;
     const descricao = document.getElementById('descricao').value;
     const usuarioId = localStorage.getItem('usuarioId');
 
-
+    const frequencia1horario1 = formatarHorario('frequencia1horario1');
+    const frequencia2horario1 = formatarHorario('frequencia2horario1');
+    const frequencia2horario2 = formatarHorario('frequencia2horario2');
+    const frequencia3horario1 = formatarHorario('frequencia3horario1');
+    const frequencia3horario2 = formatarHorario('frequencia3horario2');
+    const frequencia3horario3 = formatarHorario('frequencia3horario3');
 
     try {
-    // Enviar os dados para o servidor
-    const response = await fetch('http://localhost:3000/api/cadastrar', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ nome, validade, quantidade, frequencia, dosagem, frequencia1horario1, frequencia2horario1, frequencia2horario2, frequencia3horario1, frequencia3horario2, frequencia3horario3, descricao, usuarioId })
-    });
-    
+        const response = await fetch('http://localhost:3000/api/cadastrar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nome,
+                validade,
+                quantidade,
+                frequencia,
+                dosagem,
+                frequencia1horario1,
+                frequencia2horario1,
+                frequencia2horario2,
+                frequencia3horario1,
+                frequencia3horario2,
+                frequencia3horario3,
+                descricao,
+                usuarioId
+            })
+        });
+
         const data = await response.json();
-        alert(data.message); // Exibe uma mensagem de sucesso
-        document.getElementById('medicamentoForm').reset(); // Limpa o formulário
+        alert(data.message);
+        document.getElementById('medicamentoForm').reset();
     } catch (error) {
         console.error('Erro:', error);
         alert('Erro ao cadastrar medicamento!');
     }
 });
 
+// Exibe campos de horário e dosagem de acordo com a frequência selecionada
+document.getElementById('frequencia').addEventListener('change', function () {
+    const valor = this.value;
 
-document.getElementById('frequencia').addEventListener('click', function() {
-    var container1horario = document.getElementById('container1horario');
-    var dosagem = document.getElementById('containerDosagem');
-    if (this.value === 'Uma vez ao dia') {
-        dosagem.style.display = 'block';
-        container1horario.style.display = 'block';
-    } else {
-        container1horario.style.display = 'none';
+    document.getElementById('container1horario').style.display = 'none';
+    document.getElementById('container2horario').style.display = 'none';
+    document.getElementById('container3horario').style.display = 'none';
+    document.getElementById('containerDosagem').style.display = 'none';
+
+    if (valor === 'Uma vez ao dia') {
+        document.getElementById('container1horario').style.display = 'block';
+        document.getElementById('containerDosagem').style.display = 'block';
+    } else if (valor === 'Duas vezes ao dia') {
+        document.getElementById('container2horario').style.display = 'block';
+        document.getElementById('containerDosagem').style.display = 'block';
+    } else if (valor === 'Três vezes ao dia') {
+        document.getElementById('container3horario').style.display = 'block';
+        document.getElementById('containerDosagem').style.display = 'block';
     }
 });
 
-document.getElementById('frequencia').addEventListener('click', function() {
-    var container2horario = document.getElementById('container2horario');
-    var dosagem2 = document.getElementById('containerDosagem');
-    if (this.value === 'Duas vezes ao dia') {
-        dosagem2.style.display = 'block';
-        container2horario.style.display = 'block';
-    } else {
-        container2horario.style.display = 'none';
-    }
-});
-
-document.getElementById('frequencia').addEventListener('click', function() {
-    var container3horario = document.getElementById('container3horario');
-    var dosagem3 = document.getElementById('containerDosagem');
-    if (this.value === 'Três vezes ao dia') {
-        dosagem3.style.display = 'block';
-        container3horario.style.display = 'block';
-    } else {
-        container3horario.style.display = 'none';
-    }
-});
-
+// Botão de voltar para a home
 const back = document.getElementsByTagName('i');
-    if (back.length > 0) {
-        back[0].addEventListener('click', async function () {
-            window.location.href = 'home.html'
-        })
-    }
+if (back.length > 0) {
+    back[0].addEventListener('click', function () {
+        window.location.href = 'home.html';
+    });
+}
