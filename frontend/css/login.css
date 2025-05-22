@@ -3,7 +3,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('/frontend/images/Fundo\ form.webp');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('/images/Fundo\ form.webp');
   background-size: cover;
   /* cobre toda a área */
   display: flex;
@@ -46,6 +46,12 @@ button {
   cursor: pointer;
   text-decoration: none;
   font-size: 16px;
+  transition: background-color ease 0.1s;
+}
+
+.button, 
+button:hover {
+  background-color: #3592f5;
 }
 
 a {
@@ -133,7 +139,7 @@ main {
 
 i {
   font-size: 50px;
-  color: #0077cc;
+  color: #fff;
   position: fixed;
   top: 25px;
   left: 35px;

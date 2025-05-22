@@ -1,0 +1,74 @@
+.tela-inicial {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('/images/Fundo\ form.webp');
+  background-size: cover;
+  /* cobre toda a área */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background: #FFFFFF80;
+  backdrop-filter: blur(1px);
+  padding: 40px 50px 10px 40px;
+  min-width: 300px;
+  min-height: 300px;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  margin-top: 15px;
+}
+
+.botao-entrar {
+  padding: 12px 24px;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  display: inline-block;
+  transition: background-color ease 0.1s;
+}
+
+.botao-entrar:hover {
+  background-color: #3592f5;
+}
+
+.pill {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  opacity: 0;
+  animation: fadeSlideUpRepeat 3s ease-in-out infinite;
+  object-fit: contain;
+}
+
+.pill:nth-child(2) {
+  top: 100px;
+  left: 265px;
+  animation-delay: 0s;
+}
+
+.pill:nth-child(3) {
+  top: 140px;
+  left: 290px;
+  animation-delay: 1.5s;
+}
+
+@keyframes fadeSlideUpRepeat {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -107,9 +107,9 @@ async function fetchMedicamentos() {
                 // Cria o link para excluir as informações do medicamento
                 const linkLixeira = document.createElement('a');
                 linkLixeira.className = 'linkLixeira';
-                const imagemLinkLixeira = document.createElement('img');
-                imagemLinkLixeira.className = 'imagemLixeira';
-                imagemLinkLixeira.src = '../images/lixeira-removebg-preview.png';
+                const imagemLinkLixeira = document.createElement('i');
+                imagemLinkLixeira.className = 'fa-solid fa-trash-can';
+                // imagemLinkLixeira.src = '../images/lixeira-removebg-preview.png';
 
                 // Cria o link para editar as informações do medicamento
                 const linkEdit = document.createElement('a');

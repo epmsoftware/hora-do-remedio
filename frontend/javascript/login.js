@@ -22,7 +22,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             // Se o erro for 401, redireciona para a página de cadastro
             if (response.status === 401) {
                 alert('Usuário não cadastrado.');
-                window.location.href = '/frontend/html/usuario.html'; // Redireciona para o formulário de cadastro
+                window.location.href = '/usuario.html'; // Redireciona para o formulário de cadastro
             } else {
                 alert(data.message || 'Erro desconhecido');
             }

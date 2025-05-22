@@ -7,7 +7,7 @@
 body {
     line-height: 1.5;
     font-family: Arial, sans-serif;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/frontend/images/descarte.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/descarte.png');
     background-size: cover;
 }
 
@@ -19,7 +19,7 @@ body {
 
 .back i {
     font-size: 50px;
-    color: #0077cc;
+    color: #fff;
     position: fixed;
     top: 25px;
     left: 35px;
@@ -46,8 +46,9 @@ h2 {
     gap: 45px;
 }
 
-.imagemLixeira {
-    height: 45px;
+.fa-trash-can {
+    font-size: 27px;
+    color: #fff;
 }
 
 .linkLixeira {
@@ -55,12 +56,17 @@ h2 {
     align-items: center;
 }
 
-.imagemLixeira:hover {
+.fa-trash-can:hover {
     cursor: pointer;
 }
 
 .fa-pen {
     font-size: 27px;
+    color: #fff;
+}
+
+.fa-pen:hover {
+    cursor: pointer;
 }
 
 .linkEdit {

@@ -8,7 +8,7 @@ body {
     height: 100%;
     line-height: 1.5;
     font-family: Arial, sans-serif;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/frontend/images/descarte.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/descarte.png');
     background-size: cover;
 }
 
@@ -70,15 +70,17 @@ body {
     color: white;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color ease 0.1s;
 }
 
 button:hover {
     cursor: pointer;
+    background-color: #3592f5;
 }
 
 i {
     font-size: 50px;
-    color: #0077cc;
+    color: #fff;
     position: fixed;
     top: 25px;
     left: 35px;

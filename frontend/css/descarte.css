@@ -9,7 +9,7 @@
 body {
   line-height: 1.5;
   font-family: "Poppins", sans-serif;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/frontend/images/Fundo\ form.webp');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/Fundo\ form.webp');
   backdrop-filter: blur(1px);
   background-size: cover;
 }
@@ -25,7 +25,7 @@ header i:hover {
 
 i {
   font-size: 50px;
-  color: #0077cc;
+  color: #fff;
   position: fixed;
   top: 25px;
   left: 35px;
