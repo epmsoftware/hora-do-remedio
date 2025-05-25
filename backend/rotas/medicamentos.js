@@ -47,12 +47,31 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-router.put('/editarestoque/:id', (req, res) => {
-    const { quantidade } = req.body;
-    const sql = 'UPDATE cadastromedicamentos SET quantidade = ? WHERE id = ?';
-    db.run(sql, [quantidade, req.params.id], err => {
-        if (err) return res.status(500).json({ message: 'Erro ao editar a quantidade' });
-        res.status(200).json({ message: 'Quantidade atualizada com sucesso!' });
+router.put('/editar/:id', (req, res) => {
+    const { nome, quantidade, validade, frequencia1horario1, frequencia2horario1, frequencia2horario2 } = req.body;
+    const sql = `
+        UPDATE cadastromedicamentos 
+        SET nome = ?, quantidade = ?, validade = ?, 
+            frequencia1horario1 = ?, frequencia2horario1 = ?, frequencia2horario2 = ?
+        WHERE id = ?
+    `;
+
+    const params = [
+        nome,
+        quantidade,
+        validade,
+        frequencia1horario1,
+        frequencia2horario1,
+        frequencia2horario2,
+        req.params.id
+    ];
+
+    db.run(sql, params, err => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'Erro ao editar medicamento' });
+        }
+        res.status(200).json({ message: 'Medicamento atualizado com sucesso!' });
     });
 });
 
