@@ -72,18 +72,6 @@ select {
     width: 100%;
 }
 
-.container1horario input {
-    margin-left: 15px;
-}
-
-.container2horario input {
-    margin-left: 15px;
-}
-
-.container3horario input {
-    margin-left: 15px;
-}
-
 .formularioMedicamentos .container_personalizado input {
     margin-left: 100px;
 }
