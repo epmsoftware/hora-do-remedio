@@ -65,7 +65,7 @@ async function fetchMedicamentos() {
                             document.getElementById('audioNot').play();
                             alert(`Lembrete: tome seu ${medicamento.nome} - Dosagem: ${medicamento.dosagem}`);
                             contador++;
-                        }, 5 * 60 * 1000); // 5 minutos
+                        }, 3 * 60 * 1000); // 3 minutos
 
                         alarmesAtivos[chave] = repetidor;
                     }

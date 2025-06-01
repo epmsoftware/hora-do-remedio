@@ -8,9 +8,9 @@ const db = new sqlite3.Database('./banco.sqlite', (err) => {
     db.serialize(() => {
       db.run('DELETE FROM sqlite_sequence', (err) => {
         if (err) {
-          console.error('Erro ao apagar pacientes:', err.message);
+          console.error('Erro ao apagar sequence:', err.message);
         } else {
-          console.log('Todos os pacientes foram apagados com sucesso.');
+          console.log('Sequence apagado com sucesso.');
         }
       });
     });
