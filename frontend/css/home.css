@@ -15,7 +15,9 @@ body {
   font-family: "Poppins", sans-serif;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/descarte.png');
   background-size: cover;
-  height: 80vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
 }
 
 header {
