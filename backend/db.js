@@ -10,7 +10,7 @@ const db = new sqlite3.Database('./banco.sqlite', (err) => {
         db.run(`
             CREATE TABLE IF NOT EXISTS usuarios (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nome TEXT NOT NULL,
+                nome TEXT NOT NULL UNIQUE,
                 senha TEXT NOT NULL
             )
         `);

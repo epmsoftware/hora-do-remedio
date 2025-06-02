@@ -1,48 +1,55 @@
+// Quando a página terminar de carregar, executa esse código
 window.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('http://localhost:3000/api/usuario-logado', {
+        // Faz uma requisição para saber se o usuário está logado
+        const resposta = await fetch('http://localhost:3000/api/usuario-logado', {
             method: 'GET',
-            credentials: 'include',
-            cache: 'no-store',
+            credentials: 'include', // Inclui cookies (para manter a sessão)
+            cache: 'no-store', // Não usa cache, sempre busca do servidor
         });
-        const data = await response.json();
-        
-        if (!data.logado) {
+
+        const dados = await resposta.json();
+
+        // Se não estiver logado, redireciona para a página de login
+        if (!dados.logado) {
             alert('Sessão expirada. Faça login novamente.');
-            window.location.href = '/';
+            window.location.href = '/'; // Redireciona para a página inicial (login)
         } else {
-            console.log('Usuário logado com ID:', data.usuarioId);
-            // Exiba o nome ou ID do usuário na interface, se quiser
+            console.log('Usuário logado com ID:', dados.usuarioId);
+            // Aqui você pode mostrar o nome ou ID do usuário na tela, se quiser
         }
-    } catch (error) {
-        console.error('Erro ao verificar sessão:', error);
+    } catch (erro) {
+        console.error('Erro ao verificar sessão:', erro);
     }
 });
 
-const logoutIcon = document.querySelector('i.fa-right-from-bracket');
+// Seleciona o ícone de logout (sair) usando a classe do Font Awesome
+const botaoLogout = document.querySelector('i.fa-right-from-bracket');
 
-if (logoutIcon) {
-    logoutIcon.addEventListener('click', async function () {
+// Se o botão de logout existir, adiciona o evento de clique
+if (botaoLogout) {
+    botaoLogout.addEventListener('click', async function () {
         try {
-            const response = await fetch('http://localhost:3000/api/logout', {
+            // Envia a requisição de logout para o servidor
+            const resposta = await fetch('http://localhost:3000/api/logout', {
                 method: 'POST',
-                credentials: 'include',
+                credentials: 'include', // Inclui cookies
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
 
-            const data = await response.json();
+            const dados = await resposta.json();
 
-            if (response.ok) {
-                alert(data.message);
-                window.location.href = '/';
+            if (resposta.ok) {
+                alert(dados.mensagem); // Mostra mensagem de sucesso
+                window.location.href = '/'; // Redireciona para o login
             } else {
-                alert('Erro ao deslogar: ' + data.message);
+                alert('Erro ao sair: ' + dados.mensagem); // Mostra erro
             }
-        } catch (error) {
-            console.error('Erro:', error);
-            alert('Erro na requisição de logout');
+        } catch (erro) {
+            console.error('Erro:', erro);
+            alert('Erro ao tentar sair da conta');
         }
     });
 }

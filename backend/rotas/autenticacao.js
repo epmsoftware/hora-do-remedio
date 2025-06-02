@@ -1,62 +1,96 @@
-const express = require('express');
-const bcrypt = require('bcrypt');
-const db = require('../db');
+// Importa os módulos necessários
+const express = require('express'); // Framework para criar APIs
+const bcrypt = require('bcrypt'); // Biblioteca para criptografar senhas
+const banco = require('../db'); // Conexão com o banco de dados SQLite (ou outro)
 
-const router = express.Router();
+const rotas = express.Router(); // Cria um agrupamento de rotas
 
-router.post('/usuario', async (req, res) => {
-    const { nome, senha } = req.body;
-    try {
-        const hashedPassword = await bcrypt.hash(senha, 10);
-        const sql = 'INSERT INTO usuarios (nome, senha) VALUES (?, ?)';
-        db.run(sql, [nome, hashedPassword], function (err) {
-            if (err) {
-                return res.status(500).json({ message: 'Erro ao cadastrar usuário' });
-            }
-            res.status(200).json({ message: 'Usuário cadastrado com sucesso!' });
+// Rota para criar novo usuário
+rotas.post('/usuario', async (pedido, resposta) => {
+    const { nome, senha } = pedido.body; // Pega o nome e senha enviados pelo usuário
+    
+    // Verifica se já existe um usuário com esse nome
+    const verificarUsuario = 'SELECT * FROM usuarios WHERE nome = ?';
+    banco.get(verificarUsuario, [nome], async (erro, usuarioExistente) => {
+        if (erro) {
+            return resposta.status(500).json({ mensagem: 'Erro ao procurar usuário no banco' });
+        }
+
+        if (usuarioExistente) {
+            return resposta.status(400).json({ mensagem: 'Este nome de usuário já está sendo usado' });
+        }
+
+        try {
+            // Criptografa a senha antes de salvar no banco
+            const senhaCriptografada = await bcrypt.hash(senha, 10);
+            // Insere o novo usuário no banco
+            const inserirUsuario = 'INSERT INTO usuarios (nome, senha) VALUES (?, ?)';
+
+            banco.run(inserirUsuario, [nome, senhaCriptografada], function (erro) {
+                if (erro) {
+                    return resposta.status(500).json({ mensagem: 'Erro ao salvar usuário no banco' });
+                }
+
+                resposta.status(200).json({ mensagem: 'Usuário cadastrado com sucesso!' });
+            });
+        } catch (erro) {
+            resposta.status(500).json({ mensagem: 'Erro interno ao cadastrar usuário' });
+        }
+    });
+});
+
+// Rota para fazer login
+rotas.post('/login', (pedido, resposta) => {
+    const { nome, senha } = pedido.body; // Pega nome e senha do corpo da requisição
+
+    const buscarUsuario = 'SELECT * FROM usuarios WHERE nome = ?';
+    banco.get(buscarUsuario, [nome], async (erro, usuarioEncontrado) => {
+        if (erro || !usuarioEncontrado) {
+            return resposta.status(401).json({ mensagem: 'Usuário ou senha incorretos' });
+        }
+
+        // Compara a senha digitada com a senha salva no banco (criptografada)
+        const senhaCorreta = await bcrypt.compare(senha, usuarioEncontrado.senha);
+        if (!senhaCorreta) {
+            return resposta.status(401).json({ mensagem: 'Senha incorreta' });
+        }
+
+        // Se tudo certo, salva o ID do usuário na sessão (mantém ele logado)
+        pedido.session.usuarioId = usuarioEncontrado.id;
+
+        resposta.status(200).json({
+            mensagem: 'Login feito com sucesso',
+            usuarioId: usuarioEncontrado.id
         });
-    } catch (error) {
-        res.status(500).json({ message: 'Erro interno ao cadastrar usuário' });
-    }
-});
-
-router.post('/login', (req, res) => {
-    const { nome, senha } = req.body;
-    const sql = 'SELECT * FROM usuarios WHERE nome = ?';
-    db.get(sql, [nome], async (err, usuario) => {
-        if (err || !usuario) {
-            return res.status(401).json({ message: 'Usuário ou senha inválidos' });
-        }
-
-        const senhaValida = await bcrypt.compare(senha, usuario.senha);
-        if (!senhaValida) {
-            return res.status(401).json({ message: 'Senha incorreta' });
-        }
-
-        req.session.usuarioId = usuario.id;
-        res.status(200).json({ message: 'Login bem-sucedido', usuarioId: usuario.id });
     });
 });
 
-router.post('/logout', (req, res) => {
-    req.session.destroy(err => {
-        if (err) return res.status(500).json({ message: 'Erro ao deslogar' });
-        res.clearCookie('connect.sid');
-        res.status(200).json({ message: 'Logout bem-sucedido' });
+// Rota para sair (logout)
+rotas.post('/logout', (pedido, resposta) => {
+    pedido.session.destroy(erro => {
+        if (erro) {
+            return resposta.status(500).json({ mensagem: 'Erro ao sair da conta' });
+        }
+
+        resposta.clearCookie('connect.sid'); // Remove o cookie da sessão
+        
+        resposta.status(200).json({ mensagem: 'Logout feito com sucesso' });
     });
 });
 
-router.get('/usuario-logado', (req, res) => {
-    if (req.session.usuarioId) {
-        res.status(200).json({
+// Rota para verificar se o usuário está logado
+rotas.get('/usuario-logado', (pedido, resposta) => {
+    if (pedido.session.usuarioId) {
+        resposta.status(200).json({
             logado: true,
-            usuarioId: req.session.usuarioId
+            usuarioId: pedido.session.usuarioId
         });
     } else {
-        res.status(200).json({
+        resposta.status(200).json({
             logado: false
         });
     }
 });
 
-module.exports = router;
+// Exporta as rotas para serem usadas em outro arquivo
+module.exports = rotas;

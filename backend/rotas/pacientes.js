@@ -1,22 +1,30 @@
-const express = require('express');
-const router = express.Router();
-const db = require('../db');
+const express = require('express'); // Framework para criar APIs
+const banco = require('../db'); // Conexão com o banco de dados SQLite (ou outro)
 
-router.post('/', (req, res) => {
-    const { nome, idade, peso, altura, email, telefone, observacao } = req.body;
+const rotas = express.Router(); // Cria um agrupamento de rotas
 
-    const sql = `
+// Rota para cadastrar um novo paciente
+rotas.post('/', (pedido, resposta) => {
+    // Pega os dados do corpo da requisição
+    const { nome, idade, peso, altura, email, telefone, observacao } = pedido.body;
+
+    // Comando SQL para inserir o paciente no banco
+    const inserirPaciente = `
         INSERT INTO pacientes (nome, idade, peso, altura, email, telefone, observacao)
         VALUES (?, ?, ?, ?, ?, ?, ?)
     `;
 
-    db.run(sql, [nome, idade, peso, altura, email, telefone, observacao], function(err) {
-        if (err) {
-            console.error('Erro ao cadastrar paciente:', err);
-            return res.status(500).json({ message: 'Erro ao cadastrar paciente' });
+    const dadosPaciente = [nome, idade, peso, altura, email, telefone, observacao];
+
+    // Executa o comando no banco
+    banco.run(inserirPaciente, dadosPaciente, function(erro) {
+        if (erro) {
+            console.error('Erro ao cadastrar paciente:', erro);
+            return resposta.status(500).json({ mensagem: 'Erro ao cadastrar paciente' });
         }
-        res.status(200).json({ message: 'Paciente cadastrado com sucesso!' });
+
+        resposta.status(200).json({ mensagem: 'Paciente cadastrado com sucesso!' });
     });
 });
 
-module.exports = router;
+module.exports = rotas; // Exporta as rotas para serem usadas em outro arquivo
