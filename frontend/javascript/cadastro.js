@@ -1,32 +1,35 @@
+// Verificação de sessão do usuário ao carregar a página
 (async () => {
     try {
-        const response = await fetch('http://localhost:3000/api/usuario-logado', {
+        const resposta = await fetch('http://localhost:3000/api/usuario-logado', {
             method: 'GET',
-            credentials: 'include'
+            credentials: 'include' // Inclui cookies (sessão)
         });
-        const data = await response.json();
+        const dados = await resposta.json();
 
-        if (!data.logado) {
+        if (!dados.logado) {
             alert('Você precisa estar logado.');
             window.location.href = '/';
         } else {
-            console.log('Usuário autenticado com ID:', data.usuarioId);
+            console.log('Usuário autenticado com ID:', dados.usuarioId);
         }
-    } catch (error) {
-        console.error('Erro ao verificar sessão:', error);
+    } catch (erro) {
+        console.error('Erro ao verificar sessão:', erro);
         alert('Erro ao verificar login.');
     }
 })();
 
-// Utilitário para formatar horário para HH:mm
-const formatarHorario = (id) => {
-    const valor = document.getElementById(id).value;
+// Função utilitária para formatar horário no formato HH:mm
+const formatarHorario = (idElemento) => {
+    const valor = document.getElementById(idElemento).value;
     return valor ? valor.slice(0, 5) : null;
 };
 
-document.getElementById('medicamentoForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
+// Manipula o envio do formulário de cadastro de medicamento
+document.getElementById('medicamentoForm').addEventListener('submit', async function(evento) {
+    evento.preventDefault(); // Impede envio padrão do formulário
 
+    // Coleta dos dados dos campos do formulário
     const nome = document.getElementById('nome').value;
     const validade = document.getElementById('validade').value;
     const quantidade = document.getElementById('quantidade').value;
@@ -35,6 +38,7 @@ document.getElementById('medicamentoForm').addEventListener('submit', async func
     const descricao = document.getElementById('descricao').value;
     const usuarioId = localStorage.getItem('usuarioId');
 
+    // Horários de acordo com a frequência
     const frequencia1horario1 = formatarHorario('frequencia1horario1');
     const frequencia2horario1 = formatarHorario('frequencia2horario1');
     const frequencia2horario2 = formatarHorario('frequencia2horario2');
@@ -43,7 +47,8 @@ document.getElementById('medicamentoForm').addEventListener('submit', async func
     const frequencia3horario3 = formatarHorario('frequencia3horario3');
 
     try {
-        const response = await fetch('http://localhost:3000/api/cadastrar', {
+        // Envia os dados para o backend via requisição POST
+        const resposta = await fetch('http://localhost:3000/api/cadastrar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -65,40 +70,40 @@ document.getElementById('medicamentoForm').addEventListener('submit', async func
             })
         });
 
-        const data = await response.json();
-        alert(data.message);
-        document.getElementById('medicamentoForm').reset();
-    } catch (error) {
-        console.error('Erro:', error);
+        const dados = await resposta.json();
+        alert(dados.mensagem);
+        document.getElementById('medicamentoForm').reset(); // Limpa o formulário após o envio
+    } catch (erro) {
+        console.error('Erro:', erro);
         alert('Erro ao cadastrar medicamento!');
     }
 });
 
-// Exibe campos de horário e dosagem de acordo com a frequência selecionada
+// Exibe os campos de horário e dosagem de acordo com a frequência selecionada
 document.getElementById('frequencia').addEventListener('change', function () {
-    const valor = this.value;
+    const valorSelecionado = this.value;
 
     document.getElementById('container1horario').style.display = 'none';
     document.getElementById('container2horario').style.display = 'none';
     document.getElementById('container3horario').style.display = 'none';
     document.getElementById('containerDosagem').style.display = 'none';
 
-    if (valor === 'Uma vez ao dia') {
+    if (valorSelecionado === 'Uma vez ao dia') {
         document.getElementById('container1horario').style.display = 'block';
         document.getElementById('containerDosagem').style.display = 'block';
-    } else if (valor === 'Duas vezes ao dia') {
+    } else if (valorSelecionado === 'Duas vezes ao dia') {
         document.getElementById('container2horario').style.display = 'block';
         document.getElementById('containerDosagem').style.display = 'block';
-    } else if (valor === 'Três vezes ao dia') {
+    } else if (valorSelecionado === 'Três vezes ao dia') {
         document.getElementById('container3horario').style.display = 'block';
         document.getElementById('containerDosagem').style.display = 'block';
     }
 });
 
-// Botão de voltar para a home
-const back = document.getElementsByTagName('i');
-if (back.length > 0) {
-    back[0].addEventListener('click', function () {
+// Botão de voltar para a tela inicial (home)
+const botaoVoltar = document.getElementsByTagName('i');
+if (botaoVoltar.length > 0) {
+    botaoVoltar[0].addEventListener('click', function () {
         window.location.href = 'home.html';
     });
 }

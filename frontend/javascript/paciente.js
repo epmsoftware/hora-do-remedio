@@ -1,27 +1,33 @@
+// Função autoexecutável para verificar se o usuário está logado
 (async () => {
     try {
-        const response = await fetch('http://localhost:3000/api/usuario-logado', {
+        // Envia requisição para verificar se há uma sessão de usuário ativa
+        const resposta = await fetch('http://localhost:3000/api/usuario-logado', {
             method: 'GET',
-            credentials: 'include'
+            credentials: 'include' // Inclui cookies/sessão na requisição
         });
-        const data = await response.json();
 
-        if (!data.logado) {
+        const dados = await resposta.json();
+
+        if (!dados.logado) {
+            // Se o usuário não estiver logado, redireciona para a página inicial
             alert('Você precisa estar logado.');
             window.location.href = '/';
         } else {
-            console.log('Usuário autenticado com ID:', data.usuarioId);
-            // Você pode exibir isso na tela se quiser
+            console.log('Usuário autenticado com ID:', dados.usuarioId);
+            // Aqui você pode usar o ID do usuário se desejar mostrar informações na tela
         }
-    } catch (error) {
-        console.error('Erro ao verificar sessão:', error);
+    } catch (erro) {
+        console.error('Erro ao verificar sessão:', erro);
         alert('Erro ao verificar login.');
     }
 })();
 
-document.getElementById('usuarioForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
+// Adiciona um ouvinte de evento para o envio do formulário de cadastro de paciente
+document.getElementById('usuarioForm').addEventListener('submit', async function(evento) {
+    evento.preventDefault(); // Evita o recarregamento da página ao enviar o formulário
 
+    // Captura os dados preenchidos no formulário
     const nome = document.getElementById('nome').value;
     const idade = document.getElementById('idade').value;
     const peso = document.getElementById('peso').value;
@@ -31,27 +37,30 @@ document.getElementById('usuarioForm').addEventListener('submit', async function
     const observacao = document.getElementById('observacao').value;
 
     try {
-    // Enviar os dados para o banco de dados
-    const response = await fetch('http://localhost:3000/api/paciente', {
-        method: 'POST',
-        headers: {
-            'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify({ nome, idade, peso, altura, email, telefone, observacao })
-    });
-    
-        const data = await response.json();
-        alert(data.message);
+        // Envia os dados para o servidor via POST
+        const resposta = await fetch('http://localhost:3000/api/paciente', {
+            method: 'POST', // Método da requisição
+            headers: {
+                'Content-Type' : 'application/json' // Informa que o corpo será em JSON
+            },
+            body: JSON.stringify({ nome, idade, peso, altura, email, telefone, observacao }) // Converte os dados para JSON
+        });
+
+        const dados = await resposta.json();
+
+        // Exibe mensagem de sucesso e limpa o formulário
+        alert(dados.mensagem);
         document.getElementById('usuarioForm').reset();
-    } catch (error) {
-        console.error('Erro:', error);
+    } catch (erro) {
+        console.error('Erro:', erro);
         alert('Erro ao cadastrar paciente!');
     }
 });
 
-const back = document.getElementsByTagName('i');
-    if (back.length > 0) {
-        back[0].addEventListener('click', async function () {
-            window.location.href = 'home.html'
-        })
-    }
+// Adiciona funcionalidade ao botão "voltar" (ícone <i>) para retornar à página inicial
+const voltar = document.getElementsByTagName('i');
+if (voltar.length > 0) {
+    voltar[0].addEventListener('click', async function () {
+        window.location.href = 'home.html';
+    });
+}
